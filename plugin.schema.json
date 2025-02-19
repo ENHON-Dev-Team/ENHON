@@ -1,0 +1,61 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/adproqwq/ENHON/main/plugin.schema.json",
+  "title": "ENHON Plugin JSON schema",
+  "description": "JSON schema for ENHON plugin",
+  "properties": {
+    "name": {
+      "description": "插件名",
+      "type": "string"
+    },
+    "id": {
+      "description": "插件ID，用于内部区别插件",
+      "type": "string"
+    },
+    "description": {
+      "description": "可选。插件描述",
+      "type": "string"
+    },
+    "versionName": {
+      "description": "插件版本名",
+      "type": "string"
+    },
+    "versionCode": {
+      "description": "插件版本号",
+      "type": "number"
+    },
+    "authors": {
+      "description": "插件作者们的信息",
+      "type": "array",
+      "exclusiveMinimum": 1,
+      "items": {
+        "properties": {
+          "name": {
+            "description": "作者名",
+            "type": "string"
+          },
+          "link": {
+            "description": "作者主页",
+            "type": "string",
+            "format": "uri"
+          }
+        },
+        "required": ["name", "link"]
+      }
+    },
+    "icon": {
+      "title": "插件图标",
+      "description": "可传入Material Icon图标名，也可传入一个指向图片文件的相对路径。若传入文件为svg，则该svg大小应为24*24",
+      "type": "string"
+    },
+    "entry": {
+      "description": "插件入口文件，仅支持js文件",
+      "type": "string"
+    },
+    "page": {
+      "description": "插件的入口HTML",
+      "type": "string"
+    }
+  },
+  "required": ["name", "id", "versionName", "versionCode", "authors", "icon", "entry", "page"]
+}

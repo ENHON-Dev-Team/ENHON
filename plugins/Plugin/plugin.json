@@ -1,0 +1,17 @@
+{
+  "$schema": "../../plugin.schema.json",
+  "name": "插件",
+  "id": "Plugin",
+  "description": "官方插件管理页",
+  "versionName": "1.0.0",
+  "versionCode": 1,
+  "authors": [
+    {
+      "name": "Adpro",
+      "link": "https://github.com/adproqwq"
+    }
+  ],
+  "icon": "extension",
+  "entry": "index.js",
+  "page": "index.html"
+}

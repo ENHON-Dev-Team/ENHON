@@ -1,0 +1,29 @@
+<div id="plugins"></div>
+
+
+<template id="card">
+  <mdui-card class="pluginCard" variant="elevated">
+    <mdui-avatar id="pluginIcon"></mdui-avatar>
+    <br>
+    <span>插件名：</span>
+    <span><slot id="pluginName"></slot></span>
+    <br>
+    <span>插件作者：</span>
+    <slot id="pluginAuthors"></slot>
+    <br>
+    <span>插件描述：</span>
+    <span><slot id="pluginDesc"></slot></span>
+    <br>
+    <span>插件版本：</span>
+    <span><slot id="pluginVersion"></slot></span>
+    <br>
+    <mdui-button-icon variant="elevated" id="pluginSettings" icon="settings" style="margin-left: auto;"></mdui-button-icon>
+  </mdui-card>
+</template>
+
+<style>
+  .pluginCard {
+    height: 180px;
+    width: 340px;
+  }
+</style>

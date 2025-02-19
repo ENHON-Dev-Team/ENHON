@@ -1,0 +1,17 @@
+{
+  "$schema": "../../plugin.schema.json",
+  "name": "主页",
+  "id": "Home",
+  "description": "官方主页",
+  "versionName": "1.0.0",
+  "versionCode": 1,
+  "authors": [
+    {
+      "name": "Adpro",
+      "link": "https://github.com/adproqwq"
+    }
+  ],
+  "icon": "home",
+  "entry": "index.js",
+  "page": "index.html"
+}
