@@ -39,6 +39,7 @@ jobs:
       - name: Cleanup Artifacts for MacOS
         if: matrix.os == 'macos-latest'
         run: |
+          pnpm add rimraf
           npx rimraf "dist/!(*.dmg)"
 
       - name: upload artifacts
