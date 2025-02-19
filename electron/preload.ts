@@ -5,4 +5,5 @@ import { IPlugin } from '../src/types/Plugin';
 contextBridge.exposeInMainWorld('Enhon', {
   getPluginList: (): Promise<Map<string, IPlugin>> => ipcRenderer.invoke('Enhon.getPluginList'),
   getPluginPath: (pluginId: string): Promise<string> => ipcRenderer.invoke('Enhon.getPluginPath', pluginId),
+  getSystemColour: (): Promise<string> => ipcRenderer.invoke('Enhon.getSystemColour'),
 });

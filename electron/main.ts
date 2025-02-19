@@ -1,4 +1,4 @@
-import { app, BrowserWindow, ipcMain, screen } from 'electron';
+import { app, BrowserWindow, ipcMain, screen, systemPreferences } from 'electron';
 import { createRequire } from 'node:module';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
@@ -53,6 +53,10 @@ const createWindow = () => {
 
   win.webContents.openDevTools();
 };
+
+ipcMain.handle('Enhon.getSystemColour', () => {
+  return systemPreferences.getColor('window');
+});
 
 ipcMain.handle('Enhon.getPluginList', () => {
   const pluginMap: Map<string, IPlugin> = new Map();
