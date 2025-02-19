@@ -35,7 +35,7 @@ jobs:
         if: matrix.os == 'windows-latest'
         run: |
           pnpm add rimraf
-          npx rimraf "dist/!(*.exe)"
+          npx rimraf --glob "dist/!(*.exe)"
 
       - name: Cleanup Artifacts for MacOS
         if: matrix.os == 'macos-latest'
