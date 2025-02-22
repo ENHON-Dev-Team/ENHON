@@ -57,4 +57,9 @@ export interface IPlugin {
    * 插件的入口HTML
    */
   page: string;
+
+  /**
+   * 可选。插件的设置页，无设置页不填
+   */
+  settingPage?: string;
 };

@@ -2,6 +2,7 @@
 import { defineComponent } from 'vue';
 import 'mdui';
 import { setColorScheme, type NavigationRailItem } from 'mdui';
+import './api/index';
 import registerPage from './utils/registerPage';
 import inject from './utils/inject';
 

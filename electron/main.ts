@@ -51,6 +51,20 @@ const createWindow = () => {
     win.loadFile(path.join(RENDERER_DIST, 'index.html'));
   }
 
+  win.webContents.setWindowOpenHandler(details => {
+    if(details.url){
+      const newWin = new BrowserWindow({
+        autoHideMenuBar: true,
+      });
+      newWin.loadURL(details.url);
+      newWin.webContents.openDevTools();
+      newWin.show();
+    }
+    return {
+      action: 'deny',
+    };
+  });
+
   win.webContents.openDevTools();
 };
 

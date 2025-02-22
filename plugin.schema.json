@@ -55,6 +55,10 @@
     "page": {
       "description": "插件的入口HTML",
       "type": "string"
+    },
+    "settingPage": {
+      "description": "可选。插件的设置页，无设置页不填",
+      "type": "string"
     }
   },
   "required": ["name", "id", "versionName", "versionCode", "authors", "icon", "entry", "page"]

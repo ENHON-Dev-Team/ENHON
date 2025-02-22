@@ -21,7 +21,7 @@
     "vue": "^3.5.13"
   },
   "devDependencies": {
-    "@types/node": "^22.13.4",
+    "@types/node": "^22.13.5",
     "@vitejs/plugin-vue": "^5.2.1",
     "electron": "^34.2.0",
     "electron-builder": "^25.1.8",
@@ -35,10 +35,10 @@
   "main": "dist-electron/main.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/adproqwq/ENHON.git"
+    "url": "https://github.com/ENHON-Dev-Team/ENHON.git"
   },
-  "homepage": "https://github.com/adproqwq/ENHON",
+  "homepage": "https://github.com/ENHON-Dev-Team/ENHON",
   "bugs": {
-    "url": "https://github.com/adproqwq/ENHON/issues"
+    "url": "https://github.com/ENHON-Dev-Team/ENHON/issues"
   }
 }
