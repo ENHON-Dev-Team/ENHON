@@ -25,4 +25,6 @@ declare namespace Enhon {
   const getPluginList: () => Promise<Map<string, import('../src/types/Plugin').IPlugin>>;
   const getPluginPath: (pluginId: string) => Promise<string>;
   const getSystemColour: () => Promise<string>;
+  const getConfig: <T>(id: string, defaultConfig?: T) => Promise<T>;
+  const setConfig: <T>(id: string, config: T) => void;
 }

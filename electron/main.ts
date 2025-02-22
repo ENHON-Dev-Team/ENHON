@@ -87,6 +87,16 @@ ipcMain.handle('Enhon.getPluginPath', (_, pluginId: string): string => {
   return pluginRegisterMap.get(pluginId)!;
 });
 
+ipcMain.handle('Enhon.getConfig', async <T>(_: Electron.IpcMainInvokeEvent, id: string, defaultConfig?: T): Promise<T> => {
+  const json = (await fs.readFile(path.join(exe, 'data', id, 'config.json'))).toString('utf-8');
+
+  return json ? JSON.parse(json) : defaultConfig;
+});
+
+ipcMain.on('Enhon.setConfig', async <T>(_: Electron.IpcMainEvent, id: string, config: T) => {
+  await fs.writeFile(path.join(exe, 'data', id, 'config.json'), JSON.stringify(config), { encoding: 'utf-8' });
+});
+
 // Quit when all windows are closed, except on macOS. There, it's common
 // for applications and their menu bar to stay active until the user quits
 // explicitly with Cmd + Q.
@@ -110,8 +120,8 @@ app.whenReady().then(async () => {
 
   pluginList.forEach(async plugin => {
     try{
-      const pluginJson: IPlugin = await require(path.join(exe, `plugins/${plugin}/plugin.json`));
-      pluginRegisterMap.set(pluginJson.id, path.join(exe, `plugins/${plugin}`).toString());
+      const pluginJson: IPlugin = await require(path.join(exe, 'plugins', plugin, 'plugin.json'));
+      pluginRegisterMap.set(pluginJson.id, path.join(exe, 'plugins', plugin).toString());
     } catch{
       return;
     }
