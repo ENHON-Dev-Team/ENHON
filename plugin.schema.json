@@ -56,7 +56,7 @@
       "description": "插件的入口HTML",
       "type": "string"
     },
-    "settingPage": {
+    "settingsPage": {
       "description": "可选。插件的设置页，无设置页不填",
       "type": "string"
     }

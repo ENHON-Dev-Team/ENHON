@@ -61,5 +61,5 @@ export interface IPlugin {
   /**
    * 可选。插件的设置页，无设置页不填
    */
-  settingPage?: string;
+  settingsPage?: string;
 };

@@ -21,7 +21,7 @@ thisPlugin.onload(async () => {
     card.querySelector('#pluginDesc').textContent = plugin.description;
     card.querySelector('#pluginVersion').textContent = plugin.versionName;
     card.querySelector('#pluginSettings').onclick = async () => {
-      if(plugin.settingPage) window.open(`${await Enhon.getPluginPath(plugin.id)}/${plugin.settingPage}`);
+      if(plugin.settingsPage) window.open(`${await Enhon.getPluginPath(plugin.id)}/${plugin.settingsPage}`);
       else window.EnhonAPI.mdui.snackbar({
         message: '该插件没有设置呢喵~',
         placement: 'top',
