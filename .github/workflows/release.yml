@@ -1,8 +1,6 @@
 name: Release
 
-on:
-  push:
-    tags: '*'
+on: workflow_dispatch
 
 jobs:
   release:
@@ -41,20 +39,3 @@ jobs:
         run: |
           pnpm add rimraf
           npx rimraf "dist/!(*.dmg)"
-
-      - name: upload artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: ${{ matrix.os }}
-          path: dist
-
-      - name: release
-        uses: softprops/action-gh-release@v2
-        if: startsWith(github.ref, 'refs/tags/')
-        with:
-          files: |
-            "dist/**"
-            LICENSE
-          body_path: changelog.md
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
