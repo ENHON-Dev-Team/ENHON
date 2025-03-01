@@ -131,6 +131,10 @@ ipcMain.handle('Enhon.getConfig', async <T>(_: Electron.IpcMainInvokeEvent, id: 
   }
 });
 
+ipcMain.handle('Enhon.getParsedPath', (_, ...args: string[]) => {
+  return path.join(...args);
+});
+
 ipcMain.on('Enhon.setConfig', async <T>(_: Electron.IpcMainEvent, id: string, config: T) => {
   try{
     await fs.mkdir(path.join(exe, 'data'));
