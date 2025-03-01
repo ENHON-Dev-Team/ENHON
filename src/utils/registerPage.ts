@@ -7,7 +7,7 @@ export default (pluginList: Map<string, IPlugin>) => {
   pluginList.forEach(async plugin => {
     const pluginId = plugin.id;
     const pluginName = plugin.name;
-    const pluginIcon = plugin.icon.includes('.') ? await (await fetch(`${Enhon.getPluginPath(pluginId)}/${plugin.icon}`)).text() : plugin.icon;
+    const pluginIcon = plugin.icon.includes('.') ? await (await fetch(await Enhon.getParsedPath(await Enhon.getPluginPath(pluginId), plugin.icon))).text() : plugin.icon;
     const broadcastChannal = new BroadcastChannel(`Enhon.plugins.${pluginId}`);
 
     const navigationBarItem = document.createElement('mdui-navigation-rail-item');
@@ -22,6 +22,7 @@ export default (pluginList: Map<string, IPlugin>) => {
 
       broadcastChannal.postMessage('load');
     };
+    if(pluginId == 'Info') navigationBarItem.slot = 'bottom';
 
     navigationBar.append(navigationBarItem);
   });

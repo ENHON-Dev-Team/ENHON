@@ -1,0 +1,17 @@
+{
+  "$schema": "../../plugin.schema.json",
+  "name": "关于",
+  "id": "Info",
+  "description": "应用关于页",
+  "versionName": "1.0.0",
+  "versionCode": 1,
+  "authors": [
+    {
+      "name": "ENHON Dev Team",
+      "link": "https://github.com/ENHON-Dev-Team"
+    }
+  ],
+  "icon": "info",
+  "entry": "index.js",
+  "page": "index.html"
+}

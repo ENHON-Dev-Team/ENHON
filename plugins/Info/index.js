@@ -1,0 +1,1 @@
+const thisPlugin = new window.EnhonAPI.plugin.EnhonPlugin('Info');
