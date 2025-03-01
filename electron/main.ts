@@ -1,8 +1,9 @@
-import { app, BrowserWindow, ipcMain, screen, systemPreferences } from 'electron';
+import { app, BrowserWindow, ipcMain, screen, systemPreferences, Menu, MenuItem } from 'electron';
 import { createRequire } from 'node:module';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import fs from 'node:fs/promises';
+import fsSync from 'node:fs';
 import { IPlugin } from '../src/types/Plugin';
 
 const require = createRequire(import.meta.url);
@@ -32,6 +33,7 @@ process.env.VITE_PUBLIC = VITE_DEV_SERVER_URL ? path.join(process.env.APP_ROOT, 
 const pluginRegisterMap: Map<string, string> = new Map();
 
 let win: BrowserWindow | null;
+let devMode = false;
 
 const createWindow = () => {
   win = new BrowserWindow({
@@ -57,16 +59,42 @@ const createWindow = () => {
         autoHideMenuBar: true,
       });
       newWin.loadURL(details.url);
-      newWin.webContents.openDevTools();
+
+      const menu = new Menu();
+      menu.append(new MenuItem({
+        label: 'Open Dev Tool',
+        submenu: [{
+          role: 'help',
+          accelerator: 'F12',
+          click: () => {
+            if(devMode) newWin.webContents.openDevTools();
+          },
+        }]
+      }));
+
+      Menu.setApplicationMenu(menu);
+
       newWin.show();
     }
     return {
       action: 'deny',
     };
   });
-
-  win.webContents.openDevTools();
 };
+
+const menu = new Menu();
+menu.append(new MenuItem({
+  label: 'Open Dev Tool',
+  submenu: [{
+    role: 'help',
+    accelerator: 'F12',
+    click: () => {
+      if(devMode) win?.webContents.openDevTools();
+    },
+  }]
+}));
+
+Menu.setApplicationMenu(menu);
 
 ipcMain.handle('Enhon.getSystemColour', () => {
   return systemPreferences.getColor('window');
@@ -88,13 +116,36 @@ ipcMain.handle('Enhon.getPluginPath', (_, pluginId: string): string => {
 });
 
 ipcMain.handle('Enhon.getConfig', async <T>(_: Electron.IpcMainInvokeEvent, id: string, defaultConfig?: T): Promise<T> => {
-  const json = (await fs.readFile(path.join(exe, 'data', id, 'config.json'))).toString('utf-8');
+  try{
+    let json: string;
+    const configPath = path.join(exe, 'data', id, 'config.json');
+    if(fsSync.existsSync(configPath)) json = (await fs.readFile(configPath)).toString('utf-8');
+    else {
+      await fs.writeFile(configPath, JSON.stringify(defaultConfig ? defaultConfig : {}), { encoding: 'utf-8' });
+      json = defaultConfig ? JSON.stringify(defaultConfig) : '{}';
+    }
 
-  return json ? JSON.parse(json) : defaultConfig;
+    return JSON.parse(json);
+  } catch{
+    return defaultConfig ? defaultConfig : JSON.parse('{}');
+  }
 });
 
 ipcMain.on('Enhon.setConfig', async <T>(_: Electron.IpcMainEvent, id: string, config: T) => {
-  await fs.writeFile(path.join(exe, 'data', id, 'config.json'), JSON.stringify(config), { encoding: 'utf-8' });
+  try{
+    await fs.mkdir(path.join(exe, 'data'));
+    await fs.mkdir(path.join(exe, 'data', id));
+  }
+  catch{
+    console.log('data has created.');
+  }
+  finally{
+    await fs.writeFile(path.join(exe, 'data', id, 'config.json'), JSON.stringify(config), { encoding: 'utf-8' });
+  }
+});
+
+ipcMain.on('Enhon.devMode', (_, status: boolean) => {
+  devMode = status;
 });
 
 // Quit when all windows are closed, except on macOS. There, it's common
