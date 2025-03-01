@@ -39,3 +39,9 @@ jobs:
         run: |
           pnpm add rimraf
           npx rimraf "dist/!(*.dmg)"
+
+      - name: upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.os }}
+          path: dist
