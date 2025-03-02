@@ -53,6 +53,10 @@ thisPlugin.onload(() => {
 });
 ```
 
+由于本应用使用`mdui`UI库，本应用已将其所有内置函数暴露至`window.EnhonAPI`中， 你可以通过`window.EnhonAPI.mdui.具体函数名`调用使用。
+
+类似地，你可以直接在html文件中使用`mdui`提供的组件。
+
 ## 4. 调试
 
 考虑到安全因素，目前的插件系统仅考虑操作渲染进程，与主进程的交互仅可通过`ENHON`提供的API进行
