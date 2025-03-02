@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@fontsource/material-icons':
-        specifier: ^5.1.1
-        version: 5.1.1
+        specifier: ^5.2.0
+        version: 5.2.0
       mdui:
         specifier: ^2.1.3
         version: 2.1.3
@@ -265,8 +265,8 @@ packages:
   '@floating-ui/utils@0.2.9':
     resolution: {integrity: sha512-MDWhGtE+eHw5JW7lq4qhc5yRLS11ERl1c7Z6Xd0a58DozHES6EnNNwUWbMiG4J9Cgj053Bhk8zvlhFYKVhULwg==}
 
-  '@fontsource/material-icons@5.1.1':
-    resolution: {integrity: sha512-l1EhBIh9US1RMiiKEJ+/FTFvHZIU3cpn0MmxSZA6Ip2C/Szwca6h2xqNg/OTIOFWADune7b/rhtypeDbjHrZzA==}
+  '@fontsource/material-icons@5.2.0':
+    resolution: {integrity: sha512-EC2twfMzCIVJNAIkf89z9BBweFO6H9OL6sL23iD422Hk6Fjb/mjakc6O9J58G2/Oxx8DSaB1o2/Tiun19G6XoQ==}
 
   '@gar/promisify@1.1.3':
     resolution: {integrity: sha512-k2Ty1JcVojjJFwrg/ThKi2ujJ7XNLYaFGNB/bWT9wGR+oSMJHMa5w+CUq6p/pVrKeNNgA7pCqEcjSnHVoqJQFw==}
@@ -2128,7 +2128,7 @@ snapshots:
 
   '@floating-ui/utils@0.2.9': {}
 
-  '@fontsource/material-icons@5.1.1': {}
+  '@fontsource/material-icons@5.2.0': {}
 
   '@gar/promisify@1.1.3': {}
 
