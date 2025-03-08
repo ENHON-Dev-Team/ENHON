@@ -13,5 +13,6 @@
   ],
   "icon": "home",
   "entry": "index.js",
-  "page": "index.html"
+  "page": "index.html",
+  "settingsPage": "settings.html"
 }

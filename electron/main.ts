@@ -131,7 +131,7 @@ ipcMain.handle('Enhon.getConfig', async <T>(_: Electron.IpcMainInvokeEvent, id: 
   }
 });
 
-ipcMain.handle('Enhon.getParsedPath', (_, ...args: string[]) => {
+ipcMain.handle('Enhon.getParsedPath', (_, args: string[]) => {
   return path.join(...args);
 });
 
