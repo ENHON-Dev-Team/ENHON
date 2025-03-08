@@ -1,4 +1,5 @@
 <script lang="ts">
+import { ipcRenderer } from 'electron';
 import { defineComponent } from 'vue';
 import 'mdui';
 import { setColorScheme, type NavigationRailItem } from 'mdui';
@@ -7,6 +8,9 @@ import registerPage from './utils/registerPage';
 import inject from './utils/inject';
 
 export default defineComponent({
+  created(){
+    ipcRenderer.send('ready-to-show');
+  },
   async mounted(){
     setColorScheme(await Enhon.getSystemColour());
     const pluginList = await Enhon.getPluginList();

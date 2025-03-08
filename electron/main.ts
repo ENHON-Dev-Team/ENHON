@@ -36,7 +36,7 @@ let win: BrowserWindow | null;
 let devMode = false;
 
 const createWindow = () => {
-  win = new BrowserWindow({
+  const loadingWin = new BrowserWindow({
     icon: path.join(process.env.VITE_PUBLIC, 'electron-vite.svg'),
     webPreferences: {
       preload: path.join(__dirname, 'preload.mjs'),
@@ -45,6 +45,18 @@ const createWindow = () => {
     width: screen.getPrimaryDisplay().workAreaSize.width,
     height: screen.getPrimaryDisplay().workAreaSize.height,
   });
+  loadingWin.loadFile(path.join(process.env.VITE_PUBLIC, 'loading.html'));
+
+  win = new BrowserWindow({
+    icon: path.join(process.env.VITE_PUBLIC, 'electron-vite.svg'),
+    webPreferences: {
+      preload: path.join(__dirname, 'preload.mjs'),
+    },
+    autoHideMenuBar: true,
+    width: screen.getPrimaryDisplay().workAreaSize.width,
+    height: screen.getPrimaryDisplay().workAreaSize.height,
+    show: false,
+  });
 
   if (VITE_DEV_SERVER_URL) {
     win.loadURL(VITE_DEV_SERVER_URL);
@@ -52,6 +64,12 @@ const createWindow = () => {
     // win.loadFile('dist/index.html')
     win.loadFile(path.join(RENDERER_DIST, 'index.html'));
   }
+
+  win.once('ready-to-show', () => {
+    loadingWin.hide();
+    loadingWin.close();
+    win?.show();
+  });
 
   win.webContents.setWindowOpenHandler(details => {
     if(details.url){

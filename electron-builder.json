@@ -10,7 +10,8 @@
   },
   "files": [
     "dist",
-    "dist-electron"
+    "dist-electron",
+    "loading.html"
   ],
   "extraFiles": [
     "plugins"
