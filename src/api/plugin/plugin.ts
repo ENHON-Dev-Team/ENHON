@@ -10,4 +10,10 @@ export class EnhonPlugin {
       if(e.data == 'load') callback();
     };
   }
+
+  onsettings(callback: Function){
+    this.broadcastChannal.onmessage = e => {
+      if(e.data == 'settings') callback();
+    };
+  }
 };

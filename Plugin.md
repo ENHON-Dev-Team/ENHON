@@ -50,7 +50,11 @@ const thisPlugin = new window.EnhonAPI.plugin.EnhonPlugin('Your plugin id');
 
 thisPlugin.onload(() => {
   // your code here...
-});
+}); // 插件加载时调用
+
+thisPlugin.onsettings(() => {
+  // your code here...
+}); // 插件打开设置页时调用
 ```
 
 由于本应用使用`mdui`UI库，本应用已将其所有内置函数暴露至`window.EnhonAPI`中， 你可以通过`window.EnhonAPI.mdui.具体函数名`调用使用。
