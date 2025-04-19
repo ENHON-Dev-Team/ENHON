@@ -21,17 +21,17 @@
     "vue": "^3.5.13"
   },
   "devDependencies": {
-    "@types/node": "^22.13.11",
+    "@types/node": "^22.14.1",
     "@vitejs/plugin-vue": "^5.2.3",
-    "electron": "^35.0.3",
-    "electron-builder": "^25.1.8",
-    "typescript": "^5.8.2",
-    "vite": "^6.2.2",
+    "electron": "^35.2.0",
+    "electron-builder": "^26.0.12",
+    "typescript": "^5.8.3",
+    "vite": "^6.3.2",
     "vite-plugin-electron": "^0.29.0",
     "vite-plugin-electron-renderer": "^0.14.6",
     "vue-tsc": "^2.2.8"
   },
-  "packageManager": "pnpm@10.6.1",
+  "packageManager": "pnpm@10.8.1",
   "main": "dist-electron/main.js",
   "repository": {
     "type": "git",
