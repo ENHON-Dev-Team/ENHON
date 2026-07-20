@@ -2,7 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/electron-userland/electron-builder/master/packages/app-builder-lib/scheme.json",
   "appId": "top.adproqwq.enhon",
   "asar": true,
-  "productName": "Enhon",
+  "productName": "ENHON",
   "copyright": "Copyright © 2026 ${author}",
   "directories": {
     "output": "dist",
@@ -37,8 +37,7 @@
   "nsis": {
     "oneClick": false,
     "perMachine": false,
-    "allowToChangeInstallationDirectory": true,
-    "deleteAppDataOnUninstall": false
+    "allowToChangeInstallationDirectory": true
   },
   "linux": {
     "target": [
