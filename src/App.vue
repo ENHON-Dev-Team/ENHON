@@ -1,4 +1,6 @@
 <script lang="ts">
+import '@fontsource/material-icons';
+import 'mdui/mdui.css';
 import { ipcRenderer } from 'electron';
 import { defineComponent } from 'vue';
 import 'mdui';

@@ -3,7 +3,7 @@
   "appId": "top.adproqwq.enhon",
   "asar": true,
   "productName": "Enhon",
-  "copyright": "Copyright © 2025 ${author}",
+  "copyright": "Copyright © 2026 ${author}",
   "directories": {
     "output": "dist",
     "buildResources": "assets"
