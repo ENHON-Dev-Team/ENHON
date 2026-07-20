@@ -1,7 +1,6 @@
 <script lang="ts">
 import '@fontsource/material-icons';
 import 'mdui/mdui.css';
-import { ipcRenderer } from 'electron';
 import { defineComponent } from 'vue';
 import 'mdui';
 import { setColorScheme, type NavigationRailItem } from 'mdui';
@@ -11,7 +10,7 @@ import inject from './utils/inject';
 
 export default defineComponent({
   created(){
-    ipcRenderer.send('ready-to-show');
+    Enhon.appReadyToShow();
   },
   async mounted(){
     setColorScheme(await Enhon.getSystemColour());

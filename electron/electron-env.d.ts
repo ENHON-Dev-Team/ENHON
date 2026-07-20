@@ -29,4 +29,5 @@ declare namespace Enhon {
   const getParsedPath: (...args: string[]) => Promise<string>;
   const setConfig: <T>(id: string, config: T) => void;
   const devMode: (status: boolean) => void;
+  const appReadyToShow: () => void;
 }

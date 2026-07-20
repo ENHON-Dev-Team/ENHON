@@ -10,4 +10,5 @@ contextBridge.exposeInMainWorld('Enhon', {
   getParsedPath: (...args: string[]): Promise<string> => ipcRenderer.invoke('Enhon.getParsedPath', args),
   setConfig: <T>(id: string, config: T) => ipcRenderer.send('Enhon.setConfig', id, config),
   devMode: (status: boolean) => ipcRenderer.send('Enhon.devMode', status),
+  appReadyToShow: () => ipcRenderer.send('ready-to-show'),
 });
